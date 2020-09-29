@@ -1,0 +1,213 @@
+nav, nav ul, nav li{ 
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+h1, h2, h3 {
+  margin: 0 0;
+}
+h2, h3 {
+  color: #555;
+  margin-bottom: 8px;
+}
+nav {
+  background: white;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-sizing: border-box;
+  padding: 0;
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.newButton a{
+  background: #4D00CA;
+  height: 100%;
+  display: block;
+  height: 2em;
+  padding: 5px 20px;
+}
+nav li a:link, nav li a:visited{
+  background-color: #4D00CA;
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+}
+nav li {
+  margin-right: 5px;
+}
+.newButton a:link, .newButton a:visited {
+  color: white;
+  text-decoration: none;
+}
+nav, nav ul {
+  width: 100%;
+}
+nav ul {
+  justify-content: space-between;
+}
+.right {
+  align-content: flex-end;
+}
+body {
+  background: #DDD;
+  font-family: 'Red Hat Text';
+}
+header.h {
+  background-color: #4D00CA;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-direction: column;
+}
+header.short {
+  height: 25vh;
+}
+header.h h3, header.h h4 {
+  color: white;
+}
+.listNameBox {
+  font-size: 1.5em;
+  color: white;
+  text-align: center;
+  border: 0;
+  padding: 10px 5px;
+  font-weight: bold;
+  background-color: #340089;
+}
+main {
+  width: 80vw;
+  border: #4D00CA;
+  height: 100vh;
+  /* padding:; */
+  margin: 10px auto;
+}
+input[type='checked']:checked {
+  background-color: #4D00CA;
+}
+.toggleOption {
+  border-radius: 15px;
+  padding: 4px;
+  font-size: .8em;
+  border: solid #4D00CA 1.6px;
+  background-color: #EEE;
+  color: #4D00CA;
+  width: fit-content;
+  transition: all 200ms;
+  padding-left: 22px;
+}
+.toggleOption.toggled {
+  background-color: #4D00CA;
+  color: white;
+}
+div.addContent {
+  display: flex;
+  flex-direction: row;
+}
+.addContent div {
+  display: flex;
+  width: 250px;
+  height: 250px;
+  background-color: #FFF;
+  margin-right: 20px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  border: solid #4D00CA 2px;
+
+}
+
+form {
+  /* display: flex; */
+}
+form input[type='search'] {
+  width: 100%;
+}
+.addMovieModal form imput[type='submit'] {
+  background-color: #4D00CA;
+  color: transparent;
+}
+#signInForm {
+  /* display: flex; */
+  width: 35vw;
+  margin: 30px auto;
+  background-color: white;
+  border-radius: 5px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 10px;
+  text-align: center;
+
+}
+form input {
+  border: solid gray 1.3px;
+  margin: 0 auto;
+  width: 70%;
+  padding: 7px 10px;
+  margin-bottom: 5px;
+}
+
+.h h2{
+  color: white;
+}
+.carouselContainer {
+  display: flex;
+}
+
+.card {
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 10px;
+  margin-right: 10px;
+
+
+}
+.card_xs {
+  width: 110px;
+  height: 150px;
+}
+.card .headline {
+  font-weight: bold;
+}
+.card_fw {
+  padding: 25px;
+  text-align: center;
+  width: 100%;
+}
+.homePageSection {
+  margin-bottom: 12.5px;
+}
+.schoolSearchPage {
+  display: flex;
+  padding: 25px;
+  box-sizing: border-box;
+}
+.schoolSearchPage aside {
+  height: 85vh;
+  background-color: white;
+}
+.searchBar {
+  display: flex;
+  margin: 15px 5px;
+}
+.searchBar input {
+  border-color: #340089;
+
+}
+.searchBar input[type='submit'] {
+  width: fit-content;
+  color: white;
+  background-color: #340089;
+}
+.collegeList li{
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+.collegeList {
+  padding-left: 0;
+}
