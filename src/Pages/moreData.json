@@ -1,0 +1,53 @@
+{
+    "2": {
+        "name": "University Of Chicago",
+        "description": "The Midwest's flagship campus, close to the heart of Chicago, offers a world-leading education, with critically-acclaimed engineering",
+        "type": "priv",
+        "zip": 60637
+    },
+    "3": {
+        "name": "University of California - Berkeley"
+    },
+    "4": {
+        "name": "University of California - Santa Barbara"
+    },
+    "5": {
+        "name": "University of California - Irving"
+    },
+    "6": {
+        "name": "University of Illinois - Chicago"
+    },
+    "7": {
+        "name": "University of Illinois - Urbana Champaign"
+    },
+    "8": {
+        "name": "University of Michigan"
+    },
+    "9": {
+        "name": "University of Massachusetts - Amehurst"
+    },
+    "10": {
+        "name": "Loyola University"
+    },
+    "11": {
+        "name": "DePaul University"
+    },
+    "12": {
+        "name": "Stanford University"
+    },
+    "13": {
+        "name": "Massachusetts Institute of Technology"
+    },
+    "14": {
+        "name": "Harvard University"
+    },
+    "15": {
+        "name": "Yale University"
+    },
+    "16": {
+        "name": "Antioch University"
+    },
+    "17": {
+        "name": "Columbia University"
+    }
+}

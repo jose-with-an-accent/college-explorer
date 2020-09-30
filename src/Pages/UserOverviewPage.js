@@ -2,6 +2,8 @@ import { FirebaseAuthConsumer, IfFirebaseAuthed, IfFirebaseUnAuthed } from '@rea
 import { FirebaseDatabaseNode } from '@react-firebase/database';
 import React, { Component } from 'react'
 import getSchoolStages from '../api/getSchoolStages'
+import { Link } from 'react-router-dom'
+import ReactTooltip from 'react-tooltip'
 import firebase from "firebase/app"
 import "firebase/auth"
 import "firebase/database"
@@ -40,20 +42,23 @@ export default class UserOverviewPage extends Component {
 
                                             <header className="h short">
                                                 <h2>{data.value && data.value["firstName"]}</h2>
-                                                <h3>{data.value && this.getGradeName(data.value.gradeLevel)}</h3>
+                                                <h3>{data.value && this.getGradeName(data.value.gradeLevel)} at {data.value && data.value["schoolName"]}</h3>
                                                 {/* <h2>{data.value.firstName}</h2> */}
                                             </header>
                                             <main>
                                                 <section id="collegesList">
-                                                    <h3>Your Colleges</h3>
+                                                    <h3>Colleges you're interested in</h3>
                                                     {data.value && data.value["college_choices"].map((val, ind) => {
                                                         return (
                                                             <div key={ind}>
-                                                                <FirebaseDatabaseNode path={`all_colleges/${val}`}>
+                                                                <FirebaseDatabaseNode path={`all_colleges/${val.collegeID}`}>
                                                                     {collegeData => {
+                                                                        console.log(val)
                                                                         return (
                                                                             <ul className="collegeList">
-                                                                                <li className="left"><span>{collegeData.value && collegeData.value.name}</span><div className="right"><span>{collegeData.value && getSchoolStages(collegeData.value.appStage)}</span> | <span>View College</span></div></li>
+
+                                                                                <li className="left"><span>{collegeData.value && collegeData.value.name}</span><div className="right"><span>Mark as Applied</span> | 
+                                                                                <span data-tip="View the college's page">{collegeData && <Link to={`/college/${val.collegeID}`}>View College</Link>}</span></div></li>
                                                                             </ul>
                                                                         )
                                                                     }}
@@ -62,6 +67,27 @@ export default class UserOverviewPage extends Component {
                                                             </div>
                                                         )
                                                     })}
+                                                    <h3>Colleges you've applied to </h3>
+                                                    {data.value && data.value["college_choices"].map((val, ind) => {
+                                                        return (
+                                                            <div key={ind}>
+                                                                <FirebaseDatabaseNode path={`all_colleges/${val.collegeID}`}>
+                                                                    {collegeData => {
+                                                                        console.log(val)
+                                                                        return (
+                                                                            <ul className="collegeList">
+
+                                                                                <li className="left"><span>{collegeData.value && collegeData.value.name}</span><div className="right"><span>{getSchoolStages(val.appStage)}</span> |
+                                                                                <span data-tip="View the college's page">{collegeData && <Link to={`/college/${val.collegeID}`}>View College</Link>}</span></div></li>
+                                                                            </ul>
+                                                                        )
+                                                                    }}
+
+                                                                </FirebaseDatabaseNode>
+                                                            </div>
+                                                        )
+                                                    })}
+
                                                 </section>
                                             </main>
                                             <p>Copyright &copy; 2020 Jose Sanchez. Fork me on GitHub!</p>

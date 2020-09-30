@@ -1,4 +1,5 @@
 export default function getSchoolStages(stageNumber) {
+    console.log(stageNumber)
     switch(stageNumber){
         case 0: return "Want to Apply"
         case 1: return "Finished Basic App"

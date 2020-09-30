@@ -3,6 +3,7 @@ import ListPage from './Pages/ListPage'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import 'react-router-modal/css/react-router-modal.css';
 import './App.css';
+import ReactTooltip from 'react-tooltip'
 import HomePage from './Pages/HomePage';
 import NewListPage from './Pages/NewListPage';
 import { ModalContainer, ModalRoute } from 'react-router-modal'
@@ -18,6 +19,10 @@ import UserOverviewPage from './Pages/UserOverviewPage';
 import TopMenu from './Components/TopMenu';
 import OnBoardingPlace from './Pages/OnBoardingPage';
 import CollegeDetailPage from './Pages/CollegeDetailPage';
+import HelpMainPage from './Pages/HelpMainPage';
+import TuitionCalculatorPage from './Pages/TuitionCalculatorPage'
+import DeadlinePage from './Pages/DeadlinePage';
+import CollegeAdminPage from './Pages/CollegeAdmin';
 function App() {
   return (
     <FirebaseAuthProvider firebase={firebase} {...config}>
@@ -30,8 +35,17 @@ function App() {
             <Route exact path="/">
               <HomePage />
             </Route>
+            <Route path="/tools/tuition">
+              <TuitionCalculatorPage />
+            </Route>
+            <Route path="/tools/deadlines">
+              <DeadlinePage />
+            </Route>
             <Route path="/signIn">
               <SignInPage />
+            </Route>
+            <Route path="/admin">
+              <CollegeAdminPage />
             </Route>
             <Route path="/college/:id">
               <CollegeDetailPage />
@@ -45,10 +59,15 @@ function App() {
             <Route path="/list/">
               <ListPage />
             </Route>
+            <Route path="/info/">
+              <HelpMainPage />
+            </Route>
             <Route path="/account">
               <UserOverviewPage />
             </Route>
             <ModalContainer />
+            <ReactTooltip />
+
           </div>
         </Router>
       </FirebaseDatabaseProvider>

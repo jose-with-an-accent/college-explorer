@@ -10,8 +10,8 @@ export default class TopMenu extends Component {
                     <ul>
                         <li><h1>collegetrackr.</h1></li>
                         <li><Link to="/schools/search">Search Colleges</Link></li>
-                        <li><Link to="/tuition">Tuition Calculator</Link></li>
-                        <li><Link to="tools/deadlines">Deadlines</Link></li>
+                        <li><Link to="/tools/tuition">Tuition Calculator</Link></li>
+                        <li><Link to="/tools/deadlines">Deadlines</Link></li>
                         <li><Link to="/info">Help</Link></li>
                     </ul>
                 </div>
