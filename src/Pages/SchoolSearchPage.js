@@ -29,24 +29,33 @@ export default class SchoolSearchPage extends Component {
     }
     render() {
         return (
-            <FirebaseDatabaseNode>
-                <div className="schoolSearchPage">
-                    <aside>
-                        <h2>Search Colleges & Universities</h2>
-                        <form onSubmit={this.searchForMovie}>
-                            <div className="searchBar">
-                                <input name="searchTerm" type="search" />
-                                <input type="submit" value="Search" />
-                                <div className="searchSuggest"></div>
-                            </div>
-                        </form>
-                        <Filter filterType="Location" options={["CHICAGO, IL", "MINNEAPOLIS, MN"]} canUseCustom onFilterChange={this.handleFilterChange} />
-                        <Filter filterType="Degrees" options={[]} canUseCustom onFilterChange={this.handleDegreeFilterChange} />
-                    </aside>
-                    <main id="searchResultsContainer">
-                        {/* Search results go here! */}
-                    </main>
-                </div>
+            <FirebaseDatabaseNode path="/">
+                {({ data }) => {
+                    console.log(data.values)
+                    return (
+                        <div className="schoolSearchPage">
+                            <aside>
+                                <h2>Search Colleges & Universities</h2>
+                                <form onSubmit={this.searchForMovie}>
+                                    <div className="searchBar">
+                                        <input name="searchTerm" type="search" />
+                                        <input type="submit" value="Search" />
+                                    </div>
+                                    <div className="searchSuggest"></div>
+
+                                </form>
+                                <Filter filterType="Location" options={["CHICAGO, IL", "MINNEAPOLIS, MN"]} canUseCustom onFilterChange={this.handleFilterChange} />
+                                {/* <Filter filterType="Degrees" options={data.values["all_programs"]} canUseCustom onFilterChange={this.handleDegreeFilterChange} /> */}
+                            </aside>
+                            <main id="searchResultsContainer">
+
+                            </main>
+                        </div>
+                    )
+                }
+                }
+                )
+
             </FirebaseDatabaseNode>
         )
     }
