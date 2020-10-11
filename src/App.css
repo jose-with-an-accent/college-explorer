@@ -173,6 +173,9 @@ form input {
 .card .headline {
   font-weight: bold;
 }
+.bold {
+  font-weight: bold;
+}
 .card_fw {
   padding: 25px;
   text-align: center;
@@ -266,4 +269,26 @@ form input {
   top: 0;
   left: 0;
   display: none;
+}
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.standalone {
+
+}
+.dialog {
+  width: 80vw;
+  padding: 20px;
+  height: 80vh;
+  box-sizing: border-box;
+  background-color: white;
+}
+.deadlineItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

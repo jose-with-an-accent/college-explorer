@@ -19,7 +19,7 @@ export default class CollegeDisplayer extends Component {
                     return (
                         <section id="collegesList">
                             <CarouselContainer>
-                                {collegeData.value && collegeData.value.map((val, ind) => {
+                                {collegeData.value?.map((val, ind) => {
                                     return <Card title={val.name} size="xs"/>
                                 })}
                             </CarouselContainer>

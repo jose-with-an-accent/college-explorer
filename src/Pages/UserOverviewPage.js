@@ -2,6 +2,7 @@ import { FirebaseAuthConsumer, IfFirebaseAuthed, IfFirebaseUnAuthed } from '@rea
 import { FirebaseDatabaseNode } from '@react-firebase/database';
 import React, { Component } from 'react'
 import getSchoolStages from '../api/getSchoolStages'
+import InterestedCollegeList from './DynamicData/InterestedCollegeList'
 import { Link } from 'react-router-dom'
 import ReactTooltip from 'react-tooltip'
 import firebase from "firebase/app"
@@ -48,45 +49,7 @@ export default class UserOverviewPage extends Component {
                                             <main>
                                                 <section id="collegesList">
                                                     <h3>Colleges you're interested in</h3>
-                                                    {data.value && data.value["college_choices"].map((val, ind) => {
-                                                        return (
-                                                            <div key={ind}>
-                                                                <FirebaseDatabaseNode path={`all_colleges/${val.collegeID}`}>
-                                                                    {collegeData => {
-                                                                        console.log(val)
-                                                                        return (
-                                                                            <ul className="collegeList">
-
-                                                                                <li className="left"><span>{collegeData.value && collegeData.value.name}</span><div className="right"><span>Mark as Applied</span> | 
-                                                                                <span data-tip="View the college's page">{collegeData && <Link to={`/college/${val.collegeID}`}>View College</Link>}</span></div></li>
-                                                                            </ul>
-                                                                        )
-                                                                    }}
-
-                                                                </FirebaseDatabaseNode>
-                                                            </div>
-                                                        )
-                                                    })}
-                                                    <h3>Colleges you've applied to </h3>
-                                                    {data.value && data.value["college_choices"].map((val, ind) => {
-                                                        return (
-                                                            <div key={ind}>
-                                                                <FirebaseDatabaseNode path={`all_colleges/${val.collegeID}`}>
-                                                                    {collegeData => {
-                                                                        console.log(val)
-                                                                        return (
-                                                                            <ul className="collegeList">
-
-                                                                                <li className="left"><span>{collegeData.value && collegeData.value.name}</span><div className="right"><span>{getSchoolStages(val.appStage)}</span> |
-                                                                                <span data-tip="View the college's page">{collegeData && <Link to={`/college/${val.collegeID}`}>View College</Link>}</span></div></li>
-                                                                            </ul>
-                                                                        )
-                                                                    }}
-
-                                                                </FirebaseDatabaseNode>
-                                                            </div>
-                                                        )
-                                                    })}
+                                                    <InterestedCollegeList collegeChoices={data.value?.college_choices} />
 
                                                 </section>
                                             </main>

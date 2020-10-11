@@ -23,6 +23,7 @@ import HelpMainPage from './Pages/HelpMainPage';
 import TuitionCalculatorPage from './Pages/TuitionCalculatorPage'
 import DeadlinePage from './Pages/DeadlinePage';
 import CollegeAdminPage from './Pages/CollegeAdmin';
+import AddToListFlow from './Pages/DynamicData/AddToListFlow';
 function App() {
   return (
     <FirebaseAuthProvider firebase={firebase} {...config}>
@@ -31,7 +32,6 @@ function App() {
 
           <div className="App">
             <TopMenu />
-
             <Route exact path="/">
               <HomePage />
             </Route>
@@ -64,6 +64,9 @@ function App() {
             </Route>
             <Route path="/account">
               <UserOverviewPage />
+            </Route>
+            <Route path="/listFlow/:initialStep/:collegeId">
+              <AddToListFlow />
             </Route>
             <ModalContainer />
             <ReactTooltip />
