@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import CustomDeadlineItem from './DeadlineItem'
+import DeadlineItem from './DeadlineItem'
+import propTypes from 'prop-types'
+import DeadlineItemAdder from './DeadlineItemAdder'
 
 const DeadlineList = (props) => {
-    const { deadlines, setDeadlines } = useState([{ name: "Set Deadline Here", appDueBy: new Date() }])
-    const { defaults } = props
-    setDeadlines(defaults)
+    const { deadlines } = props
     return (
         <div class="deadlineList">
-            
-            {deadlines?.map((val, ind) => {
-                return <CustomDeadlineItem item={val} key={ind} />
-            })}
+            {
+                deadlines?.map((val, ind) => {
+                    return <DeadlineItem item={val} key={ind} />
+                })}
         </div>
     )
+}
+DeadlineList.propTypes = {
+    deadlines: propTypes.array.isRequired
 }
 export default DeadlineList
