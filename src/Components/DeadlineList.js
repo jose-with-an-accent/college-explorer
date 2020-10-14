@@ -6,11 +6,13 @@ import DeadlineItemAdder from './DeadlineItemAdder'
 
 const DeadlineList = (props) => {
     const { deadlines } = props
+    console.log("DL DEADLINES", JSON.stringify(deadlines))
     return (
-        <div class="deadlineList">
+        <div className="deadlineList">
             {
                 deadlines?.map((val, ind) => {
                     return <DeadlineItem item={val} key={ind} />
+                    return null
                 })}
         </div>
     )

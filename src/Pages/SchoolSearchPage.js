@@ -7,7 +7,8 @@ export default class SchoolSearchPage extends Component {
         super(props)
         this.state = {
             contentResults: {},
-            searchTerm: ""
+            searchTerm: "",
+            selectedSchools: {}
         }
         this.searchForSchool = this.searchForSchool.bind(this)
         this.handleFilterChange = this.handleFilterChange.bind(this);
@@ -22,40 +23,30 @@ export default class SchoolSearchPage extends Component {
         })
     }
     searchForSchool(e) {
-        e.preventDefault()
-        let api = new TMDBApi()
-        api.searchMovieWithTitle(this.state.searchTerm)
-
     }
     render() {
         return (
             <FirebaseDatabaseNode path="/">
-                {({ data }) => {
-                    console.log(data.values)
-                    return (
-                        <div className="schoolSearchPage">
-                            <aside>
-                                <h2>Search Colleges & Universities</h2>
-                                <form onSubmit={this.searchForMovie}>
-                                    <div className="searchBar">
-                                        <input name="searchTerm" type="search" />
-                                        <input type="submit" value="Search" />
-                                    </div>
+                {({data}) => {
+                    data && this.setState({selectedSchools: data.value.all_colleges})
+                    return <div className="schoolSearchPage"> 
+                        <aside>
+                            <h2>Search Colleges & Universities</h2>
+                            <form onScroll={this.searchForSchool}>
+                                <div className="searchBar">
+                                    <input type="search" name="searchTerm" />
+                                    <input type="submit" value="search" />
                                     <div className="searchSuggest"></div>
-
-                                </form>
-                                <Filter filterType="Location" options={["CHICAGO, IL", "MINNEAPOLIS, MN"]} canUseCustom onFilterChange={this.handleFilterChange} />
-                                {/* <Filter filterType="Degrees" options={data.values["all_programs"]} canUseCustom onFilterChange={this.handleDegreeFilterChange} /> */}
-                            </aside>
-                            <main id="searchResultsContainer">
-
-                            </main>
-                        </div>
-                    )
-                }
-                }
-                )
-
+                                </div>
+                            </form>
+                            <Filter filterType="Location" options={["CHICAGO"]} canUseCustom onFilterChange={null} />
+                            <Filter filterType="Areas of Interest" options={["Computer Science"]} canUseCustom onFilterChange={null} />
+                        </aside>
+                        <main id="searchResultsContainer">
+                        {JSON.stringify(this.state.selectedSchools)}
+                        </main>
+                    </div>
+                }}
             </FirebaseDatabaseNode>
         )
     }

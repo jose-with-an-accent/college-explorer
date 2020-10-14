@@ -1,11 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
+import { usePopper } from 'react-popper';
 import { IfFirebaseAuthed, IfFirebaseUnAuthed } from '@react-firebase/auth'
 import { Link } from 'react-router-dom'
-export default class TopMenu extends Component {
-    render() {
-        return (
-            <header>
-                <nav>
+export default function TopMenu() {
+    const [referenceElement, setReferenceElement] = useState(null);
+    const [popperElement, setPopperElement] = useState(null);
+    const [arrowElement, setArrowElement] = useState(null);
+    const { styles, attributes } = usePopper(referenceElement, popperElement, {
+        placement: 'bottom',
+        strategy: "fixed",
+        modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
+    });
+    return (
+        <header>
+            <nav>
                 <div>
                     <ul>
                         <li><h1>collegetrackr.</h1></li>
@@ -16,17 +24,19 @@ export default class TopMenu extends Component {
                     </ul>
                 </div>
                 <div>
-                <ul className="right">
-                    <IfFirebaseUnAuthed>
-                        <li className="newButton"><Link to="/signIn">Sign In</Link></li>
-                    </IfFirebaseUnAuthed>
-                    <IfFirebaseAuthed>
-                        <li className="newButton"><Link to="/account">Account</Link></li>
-                    </IfFirebaseAuthed>
-                </ul>
+                    <ul className="right">
+                        <IfFirebaseUnAuthed>
+                            <li className="newButton"><Link to="/signIn">Sign In</Link></li>
+                        </IfFirebaseUnAuthed>
+                        <IfFirebaseAuthed>
+                            <li className="newButton">
+                            <div ref={setPopperElement} style={styles.popper} {...attributes.popper}><h1>AAAAA</h1></div>
+<Link to="/account">Account</Link>
+                            </li>
+                        </IfFirebaseAuthed>
+                    </ul>
                 </div>
-                </nav>
-          </header>
-        )
-    }
+            </nav>
+        </header>
+    )
 }

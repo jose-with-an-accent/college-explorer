@@ -39,31 +39,37 @@ export default class UserOverviewPage extends Component {
                             <FirebaseDatabaseNode path={`user_data/${user.uid}`} orderByValue="created_on">
                                 {data => {
                                     return (
-                                        <div>
-
+                                        <React.Fragment>
                                             <header className="h short">
                                                 <h2>{data.value && data.value["firstName"]}</h2>
                                                 <h3>{data.value && this.getGradeName(data.value.gradeLevel)} at {data.value && data.value["schoolName"]}</h3>
                                                 {/* <h2>{data.value.firstName}</h2> */}
                                             </header>
-                                            <main>
-                                                <section id="collegesList">
-                                                    <h3>Colleges you're interested in</h3>
-                                                    <InterestedCollegeList collegeChoices={data.value?.college_choices} />
+                                            <FirebaseDatabaseNode path="/all_colleges">
+                                                {colleges => {
+                                                    return <React.Fragment>
+                                                        <main>
+                                                            <section id="collegesList">
+                                                                <h3>Colleges you're interested in</h3>
+                                                                <InterestedCollegeList collegeChoices={data.value?.college_choices} allCollegesArray={colleges.value} />
 
-                                                </section>
-                                            </main>
-                                            <p>Copyright &copy; 2020 Jose Sanchez. Fork me on GitHub!</p>
-                                            <button onClick={this.signOut}>Sign Out</button>
-                                        </div>)
-                                }}
+                                                            </section>
+                                                        </main>
+                                                        <p>Copyright &copy; 2020 Jose Sanchez. Fork me on GitHub!</p>
+                                                        <button onClick={this.signOut}>Sign Out</button>
+                                                    </React.Fragment>
+                                                }
+                                                }
+                                            </FirebaseDatabaseNode>
+                                        </React.Fragment>)
+                                }
+                                }
                             </FirebaseDatabaseNode>
-                        );
+                        )
                     }
                 }
                 }
             </FirebaseAuthConsumer>
-
         )
     }
 }

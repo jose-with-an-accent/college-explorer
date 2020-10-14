@@ -28,6 +28,7 @@ export default class SignInPage extends Component {
                     <input type="password" name="appPassword" onChange={this.recordInfo} />
                     <input type="submit" value="Sign In" />
                     <button value="Register" onClick={this.signUp}>Register</button>
+                    <button value="Forgot Password" onClick={this.forgotPassword} />
                 </form>
             </div>
         )
@@ -38,6 +39,18 @@ export default class SignInPage extends Component {
         try {
             const r = await firebase.auth().signInWithEmailAndPassword(appEmail, appPassword)
             console.log(r);
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    async forgotPassword(e) {
+        e.preventDefault()
+        const {appEmail} = this.state
+        try {
+            const r = await firebase.auth().sendPasswordResetEmail(appEmail, {
+                url: 'https://xyz/forgotPassword/?email='
+            })
+            console.log(r)
         } catch (e) {
             console.log(e)
         }

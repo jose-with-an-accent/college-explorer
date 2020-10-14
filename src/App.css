@@ -292,3 +292,9 @@ form input {
     flex-direction: row;
     justify-content: space-between;
 }
+.hidden {
+  display: none;
+}
+.infoSection {
+  margin-bottom: 15px;
+}

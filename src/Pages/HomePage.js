@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import CarouselContainer from '../Components/CarouselContainer'
 import HomePageSection from '../Components/HomePageSection'
 import Card from '../Components/Card'
-import { FirebaseAuthConsumer, IfFirebaseAuthed } from '@react-firebase/auth'
+import { FirebaseAuthConsumer, IfFirebaseAuthed, IfFirebaseUnAuthed } from '@react-firebase/auth'
 import { FirebaseDatabaseNode } from '@react-firebase/database'
 import { Link } from 'react-router-dom'
 import getSchoolStages from '../api/getSchoolStages'
 import CollegeDisplayer, { PersonalCollegeDisplayer } from '../Components/CollegeDisplayer'
-export default class HomePage extends Component {
-    constructor(props) {
-        super(props)
-        this.renderSchools = this.renderSchools.bind(this)
-    }
-    renderSchools(collegeData) {
+import SignedOutHomepage from './SignedOutHomepage'
+import SignedInHomepage from './SignedInHomepage'
+export default function HomePage() {
+
+    const renderSchools = function (collegeData) {
         let itemsToRender = []
 
         console.log(collegeData)
@@ -26,31 +25,15 @@ export default class HomePage extends Component {
         console.log(JSON.stringify(itemsToRender))
         return itemsToRender;
     }
-    render() {
-        return (
-            <div>
-                <header className="h short">
-                    <h2>college tracking and search, simplified.</h2>
-                </header>
-                <main>
-                    <FirebaseAuthConsumer>
-                        {({ isSignedIn, user, providerID }) => {
-                            return (
-                                user && <HomePageSection title="Schools on Your List">
-                                    <div>
-                                        <PersonalCollegeDisplayer path={`user_data/${user.uid}/college_choices`} />
-                                    </div>
-                                </HomePageSection>
-                            )
-                        }
-                        }
+    return (
+        <FirebaseAuthConsumer>
+            <IfFirebaseAuthed>
+                <SignedInHomepage />
+            </IfFirebaseAuthed>
+            <IfFirebaseUnAuthed>
+                <SignedOutHomepage />
+            </IfFirebaseUnAuthed>
 
-                    </FirebaseAuthConsumer>
-                    <HomePageSection title="Top Colleges">
-                        <CollegeDisplayer path="all_colleges/" />
-                    </HomePageSection>
-                </main>
-            </div>
-        )
-    }
+        </FirebaseAuthConsumer>
+    )
 }
