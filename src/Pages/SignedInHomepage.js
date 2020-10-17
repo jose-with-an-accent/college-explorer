@@ -13,11 +13,11 @@ export default function SignedInHomepage() {
                             return (
                                 <React.Fragment>
                                     <header className="h">
-                                        <h1>Hi {user?.uid}</h1>
+                                        <h1>Hi {data.value?.firstName}</h1>
                                         <span>{JSON.stringify(data.value)}</span>
                                     </header>
                                     <HomePageSection title="Your Deadlines">
-                                        <p>AAAA</p>
+                                        <p>{JSON.stringify(data.value)}</p>
                                     </HomePageSection>
                                     <HomePageSection title="Colleges in your list"></HomePageSection>
                                 </React.Fragment>

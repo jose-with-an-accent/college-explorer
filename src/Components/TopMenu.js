@@ -30,8 +30,8 @@ export default function TopMenu() {
                         </IfFirebaseUnAuthed>
                         <IfFirebaseAuthed>
                             <li className="newButton">
-                            <div ref={setPopperElement} style={styles.popper} {...attributes.popper}><h1>AAAAA</h1></div>
-<Link to="/account">Account</Link>
+                                {/* <div ref={setPopperElement} style={styles.popper} {...attributes.popper}><h1>AAAAA</h1></div> */}
+                                <Link to="/account">Account</Link>
                             </li>
                         </IfFirebaseAuthed>
                     </ul>

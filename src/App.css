@@ -34,7 +34,6 @@ nav li a:link, nav li a:visited{
   padding: 5px;
 }
 nav li {
-  margin-right: 5px;
 }
 .newButton a:link, .newButton a:visited {
   color: white;
@@ -61,6 +60,8 @@ header.h {
   height: 50vh;
   display: flex;
   align-items: center;
+  background-size: cover;
+  background-position: center;
   justify-content: center;
   color: white;
   flex-direction: column;
@@ -297,4 +298,33 @@ form input {
 }
 .infoSection {
   margin-bottom: 15px;
+  transition: height 220ms;
+  /* position: absolute; */
+
 }
+.infoSection.isCollapsed {
+  max-height: 300px;
+  overflow: hidden;
+}
+.hideGradient {
+  height: 100px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+}
+
+/* header.h::before {
+  background-color: rgba(100, 100, 100, .8);
+  content: '';
+  width: 100vh;
+  height: 50vh;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+header.h {
+  z-index: 2;
+} */

@@ -7,6 +7,12 @@ export default class CollegeAdminPage extends Component{
             <div>
                 <IfFirebaseAuthed>
                 <header className="h short"><h1>College Admin Page</h1></header>
+                <div className="flex">
+                    <div>
+                        <textarea />
+                        <input type="submit" />
+                    </div>
+                </div>
                 </IfFirebaseAuthed>
             </div>
         )

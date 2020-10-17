@@ -7,6 +7,7 @@ import { FirebaseAuthConsumer } from '@react-firebase/auth'
 import CollegeStatus from '../Components/CollegeStatus'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faLocationArrow, faSearchLocation } from '@fortawesome/free-solid-svg-icons'
+// import {} from 'react-leaflet'
 
 export default function CollegeDetailPage() {
     let { id } = useParams()
@@ -25,8 +26,8 @@ export default function CollegeDetailPage() {
                                         if (collegeInfo != null) {
                                             return (
                                                 <div className="collegeDetailPage">
-                                                    <div id="headerImageBg" style={{ backgroundImage: `url: ${collegeInfo.bgImage}` }}></div>
-                                                    <header className="h">
+                                                    <div id="headerImageBg"></div>
+                                                    <header className="h" style={{ backgroundImage: `url(${collegeInfo.bgImage})` }}>
                                                         <h1>{collegeInfo.name}</h1>
                                                         <span className="flex"><FontAwesomeIcon icon={faLocationArrow} />Chicago, Illinois, USA</span>
                                                     </header>
@@ -42,7 +43,11 @@ export default function CollegeDetailPage() {
                                                                 </ul> : <span>No Admissions Averages found :(</span>}
                                                             </InfoSection>
                                                             <InfoSection title="Programs Offered">
-
+                                                                <ul>
+                                                                    {collegeInfo.programs?.map((val, ind) => {
+                                                                        return (<li>{val.name}</li>)
+                                                                    })}
+                                                                </ul>
                                                             </InfoSection>
                                                             <InfoSection title="Extracurriculars">
 

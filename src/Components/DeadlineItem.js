@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom'
 
 const DeadlineItem = (props) => {
     const { item } = props;
-    console.log(item)
+    console.log("ITEM: ", item)
     return(
-        <div class="deadlineItem">
+        <div className="deadlineItem">
             <span>{item.name}</span>
-            <span>{`${new Date(item.appDueBy * 1000)}`}</span>
+            <span>{item.appDueBy}</span>
         </div>
     )
 }

@@ -11,8 +11,7 @@ const DeadlineList = (props) => {
         <div className="deadlineList">
             {
                 deadlines?.map((val, ind) => {
-                    return <DeadlineItem item={val} key={ind} />
-                    return null
+                    return <DeadlineItem item={val[0]} key={ind} />
                 })}
         </div>
     )
