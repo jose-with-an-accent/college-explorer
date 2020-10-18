@@ -18,6 +18,8 @@ function AddToListFlow({ props }) {
             return <div className="centered"><div className="dialog standalone">
                 <AddToListStep2 onNextButtonPress={() => { setStage(stage + 1) }} collegeId={2} /></div></div>
         case 2:
+            return <div className="centered"><div className="dialog standalone">
+                <AddToListStep3 onNextButtonPress={() => { setStage(stage + 1) }} collegeId={2} /></div></div>
         default:
             return null
     }

@@ -4,7 +4,6 @@ import Filter from '../Components/Filter'
 import Card from '../Components/Card'
 import { faIcons, faLocationArrow } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-let isFeatureFunctioning = false
 
 export default class SchoolSearchPage extends Component {
     constructor(props) {

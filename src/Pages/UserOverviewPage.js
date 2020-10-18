@@ -36,7 +36,7 @@ export default class UserOverviewPage extends Component {
                 {({ isSignedIn, user, providerId }) => {
                     if (isSignedIn) {
                         return (
-                            <FirebaseDatabaseNode path={`user_data/${user.uid}`} orderByValue="created_on">
+                            <FirebaseDatabaseNode path={`/user_data/${user.uid}`} orderByValue="created_on">
                                 {data => {
                                     return (
                                         <React.Fragment>
@@ -45,13 +45,12 @@ export default class UserOverviewPage extends Component {
                                                 <h3>{data.value && this.getGradeName(data.value.gradeLevel)} at {data.value && data.value["schoolName"]}</h3>
                                                 {/* <h2>{data.value.firstName}</h2> */}
                                             </header>
-                                            <FirebaseDatabaseNode path="/all_colleges">
                                                 {colleges => {
                                                     return <React.Fragment>
                                                         <main>
                                                             <section id="collegesList">
                                                                 <h3>Colleges you're interested in</h3>
-                                                                <InterestedCollegeList collegeChoices={data.value?.college_choices} allCollegesArray={colleges.value} />
+                                                                {JSON.stringify(data)}
 
                                                             </section>
                                                         </main>
@@ -60,7 +59,6 @@ export default class UserOverviewPage extends Component {
                                                     </React.Fragment>
                                                 }
                                                 }
-                                            </FirebaseDatabaseNode>
                                         </React.Fragment>)
                                 }
                                 }
