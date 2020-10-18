@@ -1,18 +1,17 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Button from '../Components/Button'
-import { FirebaseDatabaseMutation, FirebaseDatabaseNode } from '@react-firebase/database'
+import { FirebaseDatabaseNode } from '@react-firebase/database'
 import InfoSection from '../Components/InfoSection'
 import { FirebaseAuthConsumer } from '@react-firebase/auth'
 import CollegeStatus from '../Components/CollegeStatus'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faLocationArrow, faSearchLocation } from '@fortawesome/free-solid-svg-icons'
+import { faLocationArrow } from '@fortawesome/free-solid-svg-icons'
 import convertObjectToArray from '../api/convertObjectToArray'
 // import {} from 'react-leaflet'
 
 export default function CollegeDetailPage() {
     let { id } = useParams()
-    const [isCollegeSelected, setIsCollegeSelected] = useState(false)
+    const [setIsCollegeSelected] = useState(false)
     return (
         <FirebaseAuthConsumer>
             {({ isSignedIn, user }) => {
@@ -65,7 +64,7 @@ export default function CollegeDetailPage() {
                                                                     <ul>{collegeInfo.nicknames.map((val, ind) => {
                                                                     return <li>{val}</li>
                                                                 })}</ul></React.Fragment>}
-                                                                <p>For more info, consult <a target="_blank" href={collegeInfo.siteAddress}>this school's website</a></p>
+                                                                <p>For more info, consult <a target="_blank" rel="noopener noreferrer" href={collegeInfo.siteAddress}>this school's website</a></p>
                                                             </InfoSection>
 
                                                         </div>

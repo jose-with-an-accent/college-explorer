@@ -1,13 +1,11 @@
 import { FirebaseAuthConsumer } from '@react-firebase/auth'
 import { FirebaseDatabaseMutation, FirebaseDatabaseNode } from '@react-firebase/database'
-import { app, database } from 'firebase'
-import React, { Component, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { Component } from 'react'
 import DeadlineItemAdder from '../../Components/DeadlineItemAdder'
 import DeadlineList from '../../Components/DeadlineList'
 import convertObjectToArray from '../../api/convertObjectToArray'
 import Button from '../../Components/Button'
-import PropTypes, { func } from 'prop-types'
+import PropTypes from 'prop-types'
 export default class AddToListStep1 extends Component {
     constructor(props) {
         super(props)
@@ -18,7 +16,7 @@ export default class AddToListStep1 extends Component {
     }
     render() {
         let { customDeadlines } = this.state
-        let { onNextButtonPress, collegeName, collegeId } = this.props
+        let { onNextButtonPress, collegeId } = this.props
         return (
             <FirebaseAuthConsumer>
                 {({ isSignedIn, user }) => {

@@ -1,11 +1,10 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import convertObjectToArray from '../../api/convertObjectToArray'
 import { FirebaseAuthConsumer } from '@react-firebase/auth'
 import { FirebaseDatabaseNode, FirebaseDatabaseMutation } from '@react-firebase/database'
 import DeadlineListSelector from '../../Components/DeadlineListSelector'
 import PropTypes from 'prop-types'
 import Button from '../../Components/Button'
-import { render } from '@testing-library/react'
 export default class AddToListStep2 extends Component {
     constructor(props) {
         super(props)
@@ -47,6 +46,7 @@ export default class AddToListStep2 extends Component {
                                                                         let currentItem = e[val]
                                                                         newArray.push(currentItem)
                                                                         console.log("MUTATION", JSON.stringify(newArray))
+                                                                        return null
                                                                     })
                                                                     const {key} = await runMutation(newArray)
                                                                     console.log(key, newArray)

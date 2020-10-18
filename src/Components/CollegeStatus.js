@@ -1,12 +1,12 @@
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FirebaseDatabaseMutation } from '@react-firebase/database';
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom';
 import convertObjectToArray from '../api/convertObjectToArray';
 import Button from './Button'
 export default function CollegeStatus(props) {
-    const { collegeChoices, userDatabase, currentCollegeID, uID } = props
+    const { collegeChoices, currentCollegeID, uID } = props
     let isCollegeAdded = false /*I think this is problematic as isCollegeAdded does not update, but I really don't get how else.*/
     const [hasCollegeBeenSelected, setHasCollegeBeenSelected] = useState(false)
     const [isAddDeadlineClicked, setIsAddDeadlineClicked] = useState(false)
@@ -16,10 +16,11 @@ export default function CollegeStatus(props) {
         console.log(collegeArray)
         collegeArray.map((val) => {
             //search function
-            if (val.info.collegeId == currentCollegeID) {
+            if (val.info.collegeId === currentCollegeID) {
                 isCollegeAdded = true
                 console.log("true")
             }
+            return null
         })
         if (isCollegeAdded || hasCollegeBeenSelected) {
             console.log('Already in list!');
@@ -77,7 +78,4 @@ export default function CollegeStatus(props) {
         </FirebaseDatabaseMutation>)
 
     }
-    return (
-        <p>Log in to keep tracking</p>
-    );
 }

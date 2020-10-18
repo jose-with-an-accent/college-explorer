@@ -1,12 +1,11 @@
 import { FirebaseAuthConsumer, IfFirebaseAuthed, IfFirebaseUnAuthed } from '@react-firebase/auth'
 import { FirebaseDatabaseMutation } from '@react-firebase/database'
 import React, { Component } from 'react'
-import Calendar from 'react-calendar'
 import { Link, Redirect } from 'react-router-dom'
 
 export default class OnBoardingPlace extends Component {
     constructor(props) {
-        super(props)
+        super()
         this.state = {
             firstName: '',
             lastName: '',
@@ -44,7 +43,7 @@ export default class OnBoardingPlace extends Component {
                                             gradeLevel: this.state.gradeLevel,
                                             zipCode: this.state.zipCode
                                         }
-                                        const {key} = await runMutation(obj)
+                                        await runMutation(obj)
                                         this.setState({shouldRedirectToAccountPage: true})
                                     }} />
                                 }</FirebaseDatabaseMutation>

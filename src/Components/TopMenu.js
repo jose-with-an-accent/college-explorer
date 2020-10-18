@@ -1,17 +1,8 @@
-import React, { Component, useState } from 'react'
-import { usePopper } from 'react-popper';
+import React from 'react'
 import appConfig from '../api/appConfig.json'
 import { IfFirebaseAuthed, IfFirebaseUnAuthed } from '@react-firebase/auth'
 import { Link } from 'react-router-dom'
 export default function TopMenu() {
-    const [referenceElement, setReferenceElement] = useState(null);
-    const [popperElement, setPopperElement] = useState(null);
-    const [arrowElement, setArrowElement] = useState(null);
-    const { styles, attributes } = usePopper(referenceElement, popperElement, {
-        placement: 'bottom',
-        strategy: "fixed",
-        modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
-    });
     return (
         <header>
             <nav>

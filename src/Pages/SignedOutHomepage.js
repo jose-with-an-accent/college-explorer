@@ -1,4 +1,3 @@
-import { FirebaseAuthConsumer } from '@react-firebase/auth'
 import { FirebaseDatabaseNode } from '@react-firebase/database'
 import React from 'react'
 import HomePageSection from '../Components/HomePageSection'

@@ -1,14 +1,9 @@
-import { FirebaseAuthConsumer, IfFirebaseAuthed, IfFirebaseUnAuthed } from '@react-firebase/auth'
+import { FirebaseAuthConsumer } from '@react-firebase/auth'
 import { FirebaseDatabaseNode } from '@react-firebase/database';
 import React, { Component } from 'react'
-import getSchoolStages from '../api/getSchoolStages'
-import InterestedCollegeList from './DynamicData/InterestedCollegeList'
-import { Link } from 'react-router-dom'
-import ReactTooltip from 'react-tooltip'
 import firebase from "firebase/app"
 import "firebase/auth"
 import "firebase/database"
-import { Redirect } from 'react-router-dom';
 export default class UserOverviewPage extends Component {
     constructor(props) {
         super(props)
@@ -30,7 +25,6 @@ export default class UserOverviewPage extends Component {
         }
     }
     render() {
-        let data = {}
         return (
             <FirebaseAuthConsumer>
                 {({ isSignedIn, user, providerId }) => {

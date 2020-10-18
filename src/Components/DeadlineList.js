@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React  from 'react'
 import DeadlineItem from './DeadlineItem'
 import propTypes from 'prop-types'
-import DeadlineItemAdder from './DeadlineItemAdder'
 
 const DeadlineList = (props) => {
     const { deadlines } = props

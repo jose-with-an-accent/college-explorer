@@ -8,7 +8,6 @@ function DeadlineItemAdder(props) {
     const [name, setName] = useState("")
     const [isCalendarOpen, setIsCalendarOpen] = useState(false)
     const [appDueBy, setAppDueBy] = useState(0)
-    const [dateSelected, setdateSelected] = useState(null)
         //here's the popper configurations
     const [referenceElement, setReferenceElement] = useState(null);
     const [popperElement, setPopperElement] = useState(null);

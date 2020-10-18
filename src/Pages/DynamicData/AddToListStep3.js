@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
-import convertObjectToArray from '../../api/convertObjectToArray'
-import { FirebaseDatabaseMutation, FirebaseDatabaseNode } from '@react-firebase/database'
-import DeadlineListSelector from '../../Components/DeadlineListSelector'
+
 import PropTypes from 'prop-types'
 import Button from '../../Components/Button'
-import { FirebaseAuthConsumer } from '@react-firebase/auth'
+import { Redirect } from 'react-router-dom'
 export default function AddToListStep3(props) {
-    const { collegeId, onNextButtonPress } = props
+    const [shouldRedirectHome, setShouldRedirectHome] = useState(false)
     return (
         <React.Fragment>
-            <h1>Alrighty. Now, just select which items you need and their due dates.</h1>
+            {shouldRedirectHome && <Redirect to="/" />}
+            <h1>Alright. We'll send you emails when your deadline is coming up.</h1>
+            <p>Emails for letters of recommendation and personal recommendation are sent a month before. </p>
+            <Button title="Return Home" onClick={() => {setShouldRedirectHome(true)}} />
             <ul>
                 <li className="flex">
                     

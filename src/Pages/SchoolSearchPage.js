@@ -2,12 +2,12 @@ import { FirebaseDatabaseNode } from '@react-firebase/database'
 import React, { Component } from 'react'
 import Filter from '../Components/Filter'
 import Card from '../Components/Card'
-import { faIcons, faLocationArrow } from '@fortawesome/free-solid-svg-icons'
+import { faLocationArrow } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class SchoolSearchPage extends Component {
     constructor(props) {
-        super(props)
+        super()
         this.state = {
             contentResults: {},
             searchTerm: "",

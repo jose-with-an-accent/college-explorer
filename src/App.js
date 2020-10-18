@@ -1,18 +1,18 @@
 import React from 'react';
 import ListPage from './Pages/ListPage'
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'react-router-modal/css/react-router-modal.css';
 import './App.css';
 import ReactTooltip from 'react-tooltip'
 import HomePage from './Pages/HomePage';
-import { ModalContainer, ModalRoute } from 'react-router-modal'
+import { ModalContainer } from 'react-router-modal'
 import SchoolSearchPage from './Pages/SchoolSearchPage';
 import SignInPage from './Pages/SignInPage';
 import config from './api/config.json'
 import firebase from "firebase/app"
 import "firebase/auth"
 import "firebase/database"
-import { FirebaseAuthProvider, IfFirebaseAuthed, IfFirebaseUnAuthed } from '@react-firebase/auth'
+import { FirebaseAuthProvider } from '@react-firebase/auth'
 import { FirebaseDatabaseProvider } from '@react-firebase/database'
 import UserOverviewPage from './Pages/UserOverviewPage';
 import TopMenu from './Components/TopMenu';
