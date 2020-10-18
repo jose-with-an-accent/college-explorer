@@ -29,7 +29,7 @@ export default function CollegeDetailPage() {
                                                     <div id="headerImageBg"></div>
                                                     <header className="h" style={{ backgroundImage: `url(${collegeInfo.bgImage})` }}>
                                                         <h1>{collegeInfo.name}</h1>
-                                                        <span className="flex"><FontAwesomeIcon icon={faLocationArrow} />Chicago, Illinois, USA</span>
+                                                        <span className="flex"><FontAwesomeIcon icon={faLocationArrow} /> {collegeInfo.location.friendlyCityName}, {collegeInfo.location.friendlyStateAbbrev}, {collegeInfo.location.friendlyCountryName}</span>
                                                     </header>
                                                     <div className="flex flex-row">
                                                         <div className="collegeDetailMain">
@@ -49,17 +49,22 @@ export default function CollegeDetailPage() {
                                                                     })}
                                                                 </ul>
                                                             </InfoSection>
-                                                            <InfoSection title="Extracurriculars">
+                                                            {collegeInfo.extracurriculars && <InfoSection title="Extracurriculars">
 
-                                                            </InfoSection>
+                                                            </InfoSection>}
                                                             <InfoSection title="Location">
-
+                                                                <h1>Map Goes Here</h1>
                                                             </InfoSection>
-                                                            <InfoSection title="Tuition">
+                                                            {collegeInfo.tuition && <InfoSection title="Tuition">
 
-                                                            </InfoSection>
+                                                            </InfoSection>}
                                                             <InfoSection title="More Info">
-                                                                <p>Location goes here</p>
+                                                                {collegeInfo.nicknames && <React.Fragment>
+                                                                    <p>Other Nicknames</p>
+                                                                    <ul>{collegeInfo.nicknames.map((val, ind) => {
+                                                                    return <li>{val}</li>
+                                                                })}</ul></React.Fragment>}
+                                                                <p>For more info, consult <a target="_blank" href={collegeInfo.siteAddress}>this school's website</a></p>
                                                             </InfoSection>
 
                                                         </div>

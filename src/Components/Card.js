@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-
-const Card = ({children, size, title}) => {
+import { Link } from 'react-router-dom'
+const Card = ({children, size, title, linkAddress, className = ""}) => {
     return(
-        <div className={`card card_${size}`}>
-            <span className="headline">{title}</span>
+        <div className={`card card_${size} ${className}`}>
+            <span className="headline"><Link to={linkAddress}>{title}</Link></span>
+            {children}
         </div>
     )
 }

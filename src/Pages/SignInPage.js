@@ -13,7 +13,8 @@ export default class SignInPage extends Component {
         this.signUp = this.signUp.bind(this)
         this.state = {
             appEmail: "",
-            appPassword: ""
+            appPassword: "",
+            shouldRedirectToOnboarding: false,
         }
     }
     render() {
@@ -22,6 +23,7 @@ export default class SignInPage extends Component {
                 <IfFirebaseAuthed>
                     <Redirect to="/account" />
                 </IfFirebaseAuthed>
+                {this.state.shouldRedirectToOnboarding && <Redirect to="/onboarding" />}
                 <form id="signInForm" onSubmit={this.signIn}>
                     <h2>sign in to continue</h2>
                     <input type="email" name="appEmail" onChange={this.recordInfo} />
@@ -48,7 +50,7 @@ export default class SignInPage extends Component {
         const {appEmail} = this.state
         try {
             const r = await firebase.auth().sendPasswordResetEmail(appEmail, {
-                url: 'https://xyz/forgotPassword/?email='
+                url: 'https://xyz/forgotPassword/?email=' //TODO- Change URL and add flow so forgot password works
             })
             console.log(r)
         } catch (e) {
@@ -60,6 +62,7 @@ export default class SignInPage extends Component {
         const { appEmail, appPassword } = this.state
         try {
             const r = await firebase.auth().createUserWithEmailAndPassword(appEmail, appPassword)
+            this.setState({shouldRedirectToOnboarding: true})
             console.log(r)
         } catch (e) {
             console.log(e)

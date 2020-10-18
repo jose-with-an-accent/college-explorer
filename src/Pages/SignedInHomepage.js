@@ -14,7 +14,6 @@ export default function SignedInHomepage() {
                                 <React.Fragment>
                                     <header className="h">
                                         <h1>Hi {data.value?.firstName}</h1>
-                                        <span>{JSON.stringify(data.value)}</span>
                                     </header>
                                     <HomePageSection title="Your Deadlines">
                                         <p>{JSON.stringify(data.value)}</p>

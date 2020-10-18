@@ -1,8 +1,9 @@
 import { FirebaseDatabaseNode } from '@react-firebase/database'
 import React, { Component } from 'react'
-import TMDBApi from '../api/api'
 import Filter from '../Components/Filter'
-
+import Card from '../Components/Card'
+import { faIcons, faLocationArrow } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 let isFeatureFunctioning = false
 
 export default class SchoolSearchPage extends Component {
@@ -46,9 +47,17 @@ export default class SchoolSearchPage extends Component {
                             <Filter filterType="Areas of Interest" options={["Computer Science"]} canUseCustom onFilterChange={null} />
                         </aside>
                         <main id="searchResultsContainer">
-                            {this.state.selectedSchools.map(val => {
-                                return <h1>{JSON.stringify(val)}</h1>
-                            })}
+                            {/* {this.state.selectedSchools.map(val => {  Will be used once filtering works. */}
+                            {
+                                data.value?.all_colleges.map((val, ind) => {
+                                    return <Card className="search" size="m" title={val.name} linkAddress={`/college/${ind}`}>
+                                        <span><FontAwesomeIcon icon={faLocationArrow} />: {val.location?.friendlyCityName}, {val.location?.friendlyStateAbbrev}, {val.location?.friendlyCountryName}</span>
+                                        <span>{val.description}</span>
+                                    </Card>
+                                })
+                                //     return <h1>{JSON.stringify(val)}</h1>
+                                // })}
+                            }
                         </main>
                     </div>
                 }}

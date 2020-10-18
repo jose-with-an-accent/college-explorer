@@ -5,7 +5,6 @@ import 'react-router-modal/css/react-router-modal.css';
 import './App.css';
 import ReactTooltip from 'react-tooltip'
 import HomePage from './Pages/HomePage';
-import NewListPage from './Pages/NewListPage';
 import { ModalContainer, ModalRoute } from 'react-router-modal'
 import SchoolSearchPage from './Pages/SchoolSearchPage';
 import SignInPage from './Pages/SignInPage';

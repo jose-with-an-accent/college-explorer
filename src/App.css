@@ -218,7 +218,6 @@ form input {
 .collegeList {
   padding-left: 0;
 }
-
 .description {
   margin: 0 auto;
   text-align: center;
@@ -314,7 +313,19 @@ form input {
   width: 100%;
   background-color: white;
 }
-
+.card_m {
+  /* background-color: red; */
+  margin-bottom: 10px;
+  min-height: 150px;
+  padding: 15px;
+}
+.card.search {
+  display: flex;
+  flex-direction: column;
+}
+.svg-inline--fa {
+  margin-right: 3px;
+}
 /* header.h::before {
   background-color: rgba(100, 100, 100, .8);
   content: '';
@@ -328,3 +339,7 @@ form input {
 header.h {
   z-index: 2;
 } */
+input[type='text'].styled {
+  background-color: white;
+  border: solid #4D00CA 1px;
+}
