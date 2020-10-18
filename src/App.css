@@ -6,6 +6,8 @@ nav, nav ul, nav li{
 }
 h1, h2, h3 {
   margin: 0 0;
+  font-family: 'Red Hat Display';
+
 }
 h2, h3 {
   color: #555;
@@ -20,13 +22,7 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
-.newButton a{
-  background: #4D00CA;
-  height: 100%;
-  display: block;
-  height: 2em;
-  padding: 5px 20px;
-}
+
 nav li a:link, nav li a:visited{
   background-color: #4D00CA;
   color: white;
@@ -35,21 +31,25 @@ nav li a:link, nav li a:visited{
 }
 nav li {
 }
-.newButton a:link, .newButton a:visited {
+.accountButton a:link, .accountButton a:visited {
   color: white;
   text-decoration: none;
 }
 nav, nav ul {
   width: 100%;
 }
+.right .accountButton a{
+  background: #4D00CA;
+  height: 100%;
+  display: block;
+  height: 2em;
+  padding: 5px 5px 0 5px;
+}
 nav ul {
   justify-content: space-between;
 }
 .right {
   align-content: flex-end;
-}
-h1, h2, h3 {
-  font-family: 'Red Hat Display';
 }
 body {
   background: #DDD;
@@ -69,8 +69,10 @@ header.h {
 header.short {
   height: 25vh;
 }
-header.h h3, header.h h4 {
+header.h h3, header.h h4, header.h h1 {
   color: white;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, .6);
 }
 .listNameBox {
   font-size: 1.5em;
@@ -86,7 +88,7 @@ main {
   border: #4D00CA;
   height: 100vh;
   /* padding:; */
-  margin: 10px auto;
+  margin: 0 auto 10px;
 }
 input[type='checked']:checked {
   background-color: #4D00CA;
@@ -192,20 +194,26 @@ form input {
 }
 .schoolSearchPage aside {
   height: 85vh;
+  padding: 10px;
+  margin-right: 10px;
   background-color: white;
+  position: sticky;
+  /* top: 25px; */
+  border-radius: 4px;
+
 }
 .searchBar {
   display: flex;
   margin: 15px 5px;
 }
 .searchBar input {
-  border-color: #340089;
+  border-color: #4D00CA;
 
 }
 .searchBar input[type='submit'] {
   width: fit-content;
   color: white;
-  background-color: #340089;
+  background-color: #4D00CA;
 }
 .collegeList li{
   display: flex;
@@ -248,8 +256,9 @@ form input {
   margin-right: 15px;
 }
 .collegeDetailCTA {
-  background-color: #EEE;
+  background-color: #FFF;
   padding: 15px;
+  height: fit-content;
 }
 .collegeDetailCTA h4 {
   margin: 7px 0;
@@ -318,12 +327,13 @@ form input {
   margin-bottom: 10px;
   min-height: 150px;
   padding: 15px;
+  border-radius: 4px;
 }
 .card.search {
   display: flex;
   flex-direction: column;
 }
-.svg-inline--fa {
+header .svg-inline--fa {
   margin-right: 3px;
 }
 /* header.h::before {

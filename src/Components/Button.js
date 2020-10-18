@@ -3,7 +3,7 @@ import propTypes from 'prop-types'
  function Button(props) {
     return(
         <button className={`btn btn_${props.width} ${props.type}`} onClick={props.onClick}>
-            {props.text}
+            {props.text || props.child}
         </button>
     )
 }

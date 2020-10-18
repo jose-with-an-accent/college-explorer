@@ -7,6 +7,7 @@ import { FirebaseAuthConsumer } from '@react-firebase/auth'
 import CollegeStatus from '../Components/CollegeStatus'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faLocationArrow, faSearchLocation } from '@fortawesome/free-solid-svg-icons'
+import convertObjectToArray from '../api/convertObjectToArray'
 // import {} from 'react-leaflet'
 
 export default function CollegeDetailPage() {
@@ -74,15 +75,16 @@ export default function CollegeDetailPage() {
                                                                 <span className="bold">Application Deadlines:</span>
                                                                 <ul>
 
-                                                                    {collegeInfo.deadlines ? collegeInfo.deadlines.map((val, ind) => {
-                                                                        return <li className="">{val.name}: {new Date(val.appDueBy * 1000).toDateString()}</li>
+                                                                    {collegeInfo.deadlines ? convertObjectToArray(collegeInfo.deadlines).map((val, ind) => {
+                                                                        return <li className="">{val[0].name}: {new Date(val[0].appDueBy).toDateString()}</li>
                                                                     }) : <li>No App Deadlines found.</li>}
                                                                 </ul>
                                                             </div>
                                                             {
                                                                 <React.Fragment>
                                                                     <CollegeStatus userDatabase={userDatabase.value} onCollegeSelected={() => { setIsCollegeSelected(true) }} collegeChoices={collegeChoices.college_choices} currentCollegeID={id} uID={user.uid} />
-                                                                    <p>Note: reload the page for this to take effect.</p></React.Fragment>
+                                                                    <p>Note: reload the page for this to take effect.</p>
+                                                                    </React.Fragment>
                                                             }
                                                             {/* this._renderSidebar
                                                                 // userDatabase && collegeChoices && collegeChoices.college_choices.includes(collegeInfo.id) ? <Button text="Added To List" width="fw" /> : <FirebaseDatabaseMutation type="push" path={`/user_data/${user.uid}/college_choices`}>

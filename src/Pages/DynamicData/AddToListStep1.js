@@ -7,7 +7,7 @@ import DeadlineItemAdder from '../../Components/DeadlineItemAdder'
 import DeadlineList from '../../Components/DeadlineList'
 import convertObjectToArray from '../../api/convertObjectToArray'
 import Button from '../../Components/Button'
-
+import PropTypes, { func } from 'prop-types'
 export default class AddToListStep1 extends Component {
     constructor(props) {
         super(props)
@@ -42,8 +42,28 @@ export default class AddToListStep1 extends Component {
                         </FirebaseDatabaseNode>
                         <h2>Notice any missing? Add them here.</h2>
                         <p>This info will also be used to improve on our current data, and across the site.</p>
-                        <DeadlineList deadlines={customDeadlines} />
-                        {user && <FirebaseDatabaseMutation type="set" path={`/all_colleges/${collegeId}/deadlines/${this.state.deadlineArrayLength}`}>
+                        {/* <DeadlineList deadlines={customDeadlines} /> */}
+                        {user && <FirebaseDatabaseMutation type="push" path={`/all_colleges/${collegeId}/deadlines`}>
+                                {({ runMutation }) => {
+                                    return(
+                                        <React.Fragment>
+                                            <DeadlineItemAdder onChange={(name, appDueBy) => {
+                                                const newDeadlines = [...customDeadlines]
+                                                newDeadlines.push({ name: name, appDueBy: appDueBy})
+                                                this.setState({customDeadlines: {[newDeadlines.length]: newDeadlines}})
+                                                async function mutate() {
+                                                    const a = await runMutation(newDeadlines)
+                                                    console.log(a)
+                                                    return null
+                                                }
+                                                mutate()
+                                            }} />
+                                            <Button text="Next" onClick={onNextButtonPress} />
+                                        </React.Fragment>
+                                    )
+                                }}
+                            </FirebaseDatabaseMutation>}
+                        {/* {user && <FirebaseDatabaseMutation type="set" path={`/all_colleges/${collegeId}/deadlines/${this.state.deadlineArrayLength + 1}`}>
                             {({ runMutation }) => (
                                 <React.Fragment>
                                     <DeadlineItemAdder onChange={(name, appDueBy) => {
@@ -63,7 +83,7 @@ export default class AddToListStep1 extends Component {
                                     <Button text="Next" onClick={onNextButtonPress} />
                                 </React.Fragment>)}
 
-                        </FirebaseDatabaseMutation>}
+                        </FirebaseDatabaseMutation>} */}
                     </div>)
                 }}
             </FirebaseAuthConsumer>
@@ -71,8 +91,12 @@ export default class AddToListStep1 extends Component {
     }
 }
 
+AddToListStep1.propTypes = {
+    collegeId: PropTypes.number,
+    collegeName: PropTypes.string,
+    onNextButtonPress: PropTypes.func
 
-
+}
 /* export default () => {
     const { collegeId } = useParams()
     const [customDeadlines, setCustomDeadlines] = useState([])

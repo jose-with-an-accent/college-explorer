@@ -1,3 +1,5 @@
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FirebaseDatabaseMutation } from '@react-firebase/database';
 import React, { Component, useState } from 'react'
 import { Redirect } from 'react-router-dom';
@@ -22,10 +24,13 @@ export default function CollegeStatus(props) {
         if (isCollegeAdded || hasCollegeBeenSelected) {
             console.log('Already in list!');
             return (
-                <div>
+                <div className="flex">
                     <Button text="Added to List | Set Up Deadlines" onClick={() => {
                         setIsAddDeadlineClicked(true)
                     }}  width="fw"></Button>
+                    <Button child={<FontAwesomeIcon icon={faTrash} />} onClick={() => {
+                        // setIsDeleteClicked(true)
+                    }} />
                     {isAddDeadlineClicked && <Redirect to={`/listFlow/1/${currentCollegeID}`} />}
                 </div>
             )
