@@ -1,4 +1,4 @@
-# Basic College Tracking app
+# Basic College Deadline Tracking app
 
 Created as a project for a 2020 Congressional App Challenge, this project is supposed to be used to track things for the applications process, and in the future, if scraping is possible, exploring different colleges, degrees, etc. Basic functions are still being worked on, though, and there's a very limited amount of time left to implement features.
 
