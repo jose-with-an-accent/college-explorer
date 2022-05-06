@@ -8,7 +8,7 @@ export default function TopMenu() {
             <nav>
                 <div>
                     <ul>
-                        <li><h1>collegiate.</h1></li>
+                        <li><h1><Link to="/">collegiate.</Link></h1></li>
                         <li><Link to="/schools/search">Search Colleges</Link></li>
                         { appConfig.advancedFeaturesUnlocked && <React.Fragment><li><Link to="/tools/tuition">Tuition Calculator</Link></li>
                         <li><Link to="/tools/deadlines">Deadlines</Link></li>
