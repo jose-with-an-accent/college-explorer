@@ -1,12 +1,13 @@
 {
     "2": {
         "name": "University Of Chicago",
-        "description": "The Midwest's flagship campus, close to the heart of Chicago, offers a world-leading education, with critically-acclaimed engineering programs and a relatively low cost of living.",
+        "description": "",
         "type": "priv",
         "zip": 60637
     },
     "3": {
-        "name": "University of California - Berkeley"
+        "name": "University of California - Berkeley",
+        "description": "Part of the UC"
     },
     "4": {
         "name": "University of California - Santa Barbara"

@@ -9,7 +9,9 @@ import { faLocationArrow } from '@fortawesome/free-solid-svg-icons'
 import convertObjectToArray from '../api/convertObjectToArray'
 import { useQuery, gql } from '@apollo/client'
 import { Map, TileLayer, Popup, Marker} from 'react-leaflet'
+import Button from '../Components/Button'
 const position = [51.505, -0.09]
+
 export default function CollegeDetailPage() {
     let { id } = useParams()
     const [setIsCollegeSelected] = useState(false)
@@ -21,7 +23,11 @@ export default function CollegeDetailPage() {
               name,
               description,
               city,
-              state
+              deadline,
+              state,
+              acceptsCommonApp,
+              admissions_process,
+              url
             }
           }
         }
@@ -29,9 +35,6 @@ export default function CollegeDetailPage() {
     const { loading, error, data } = useQuery(COLLEGE_INFO)
     console.log(data)
     return (
-        <FirebaseAuthConsumer>
-            {({ isSignedIn, user }) => {
-                return (
                     <div className="collegeDetailPage">
                         <div id="headerImageBg"></div>
                         <header className="h">
@@ -44,6 +47,7 @@ export default function CollegeDetailPage() {
                                     {data?.college.data.attributes.description}
                                 </InfoSection>
                                 <InfoSection title="Admissions">
+                                    {data?.college.data.attributes.admissions_process}
                                     {/* {collegeInfo?.admissionsAverages != null ? <ul>
                                                                     <li>The middle 50% SAT Range is {collegeInfo.admissionsAverages.sat.minAvgRange} - {collegeInfo.admissionsAverages.sat.maxAvgRange} </li>
                                                                     <li>The middle 50% ACT Range is {collegeInfo.admissionsAverages.act.minAvgRange} - {collegeInfo.admissionsAverages.act.maxAvgRange} </li>
@@ -60,7 +64,7 @@ export default function CollegeDetailPage() {
 
                                                             </InfoSection>} */}
                                 <InfoSection title="Location">
-                                    <Map center={position} zoom={13} scrollWheelZoom={true}>
+                                    {/* <Map center={position} zoom={13} scrollWheelZoom={true}>
                                         <TileLayer
                                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -70,62 +74,24 @@ export default function CollegeDetailPage() {
                                                 A pretty CSS3 popup. <br /> Easily customizable.
                                             </Popup>
                                         </Marker>
-                                    </Map>
+                                     </Map> */}
                                 </InfoSection>
-                                {/* {collegeInfo.tuition && <InfoSection title="Tuition"> */}
-
-                                {/* </InfoSection>} */}
-                                {/* <InfoSection title="More Info">
-                                                                {collegeInfo.nicknames && <React.Fragment>
-                                                                    <p>Other Nicknames</p>
-                                                                    <ul>{collegeInfo.nicknames.map((val, ind) => {
-                                                                    return <li>{val}</li>
-                                                                })}</ul></React.Fragment>}
-                                                                <p>For more info, consult <a target="_blank" rel="noopener noreferrer" href={collegeInfo.siteAddress}>this school's website</a></p>
-                                                            </InfoSection> */}
-
+                                <InfoSection title="Tuition">
+                                </InfoSection>
+                                <InfoSection title="Similar schools">
+                                     <span>Filter</span>
+                                </InfoSection>
                             </div>
                             <aside className="collegeDetailCTA">
+                            <Button width="fw" text="Sign in to track progress" type="disabled"/> 
+                            <a href={data?.college.data.attributes.url}>Visit Website</a>
                                 <h4>Application Information</h4>
-                                <div className="warning">
-                                    <span className="bold">Application Deadlines:</span>
-                                    <ul>
-
-                                        {/* {collegeInfo.deadlines ? convertObjectToArray(collegeInfo.deadlines).map((val, ind) => {
-                                                                        return <li className="">{val[0].name}: {new Date(val[0].appDueBy).toDateString()}</li>
-                                                                    }) : <li>No App Deadlines found.</li>} */}
-                                    </ul>
+                                <div className="">
+                                    <p className="bold warning">Application Deadline: {data?.college.data.attributes.deadline}</p>
+                                    {data?.college.data.attributes.acceptsCommonApp && <span>This college accepts the <a href="#">Common App.</a></span>}
                                 </div>
-                                {/* {
-                                                                <React.Fragment>
-                                                                    <CollegeStatus userDatabase={userDatabase.value} onCollegeSelected={() => { setIsCollegeSelected(true) }} collegeChoices={collegeChoices.college_choices} currentCollegeID={id} uID={user.uid} />
-                                                                    <p>Note: reload the page for this to take effect.</p>
-                                                                    </React.Fragment>
-                                                            } */}
-                                {/* this._renderSidebar
-                                                                // userDatabase && collegeChoices && collegeChoices.college_choices.includes(collegeInfo.id) ? <Button text="Added To List" width="fw" /> : <FirebaseDatabaseMutation type="push" path={`/user_data/${user.uid}/college_choices`}>
-                                                                //     {({ runMutation }) => {
-                                                                //         return <Button text="Add To List" width="fw" onClick={
-                                                                //             async () => {
-                                                                //                 const index = collegeChoices.college_choices.length + 1;
-                                                                //                 console.log("ClIcked!")
-                                                                //                 const a = await runMutation({data: {
-                                                                //                     appStage: 0,
-                                                                //                     collegeId: 3
-                                                                //                 }})
-
-                                                                //                 console.log(a)
-                                                                //             }
-                                                                //         }>Add To List</Button>
-                                                                //     }}
-                                                                // </FirebaseDatabaseMutation>
-                                                                <Button text="Working on it!" width="fw" type="secondary" />*/}
                             </aside>
                         </div>
                     </div>
                 )
-
-            }}
-        </FirebaseAuthConsumer>
-    )
 }

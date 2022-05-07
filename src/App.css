@@ -34,6 +34,9 @@ nav li a:link, nav li a:visited{
 }
 nav li {
 }
+.warning {
+  background-color: rgb(254, 254, 136);
+}
 .accountButton a:link, .accountButton a:visited {
   color: white;
   text-decoration: none;
@@ -47,6 +50,17 @@ nav, nav ul {
   display: block;
   height: 2em;
   padding: 5px 5px 0 5px;
+}
+.fw {
+  width: 100%;
+  display: block;
+}
+.btn {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+button.disabled {
+  background-color: #DDD;
+  color: black;
 }
 nav ul {
   justify-content: space-between;
@@ -166,9 +180,10 @@ form input {
 
 .card {
   background-color: white;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  padding: 10px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); 
+   padding: 10px;
   margin-right: 10px;
+  border-radius: 10px;
 
 
 }
@@ -364,4 +379,18 @@ header.h {
 input[type='text'].styled {
   background-color: white;
   border: solid #4D00CA 1px;
+}
+.homePageSection.blue  {
+  background-color: darkgreen;
+  color: white;
+  padding: 15px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  flex-direction: column;
+}
+.homePageSection.blue h3 {
+  color: white;
+}
+.homePageSection.blue > div {
+  flex-direction: column;
 }
