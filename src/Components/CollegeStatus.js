@@ -2,7 +2,6 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FirebaseDatabaseMutation } from '@react-firebase/database';
 import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom';
 import convertObjectToArray from '../api/convertObjectToArray';
 import Button from './Button'
 export default function CollegeStatus(props) {
@@ -32,7 +31,7 @@ export default function CollegeStatus(props) {
                     <Button child={<FontAwesomeIcon icon={faTrash} />} onClick={() => {
                         // setIsDeleteClicked(true)
                     }} />
-                    {isAddDeadlineClicked && <Redirect to={`/listFlow/1/${currentCollegeID}`} />}
+                    {/* {isAddDeadlineClicked && <Redirect to={`/listFlow/1/${currentCollegeID}`} />} */}
                 </div>
             )
         }

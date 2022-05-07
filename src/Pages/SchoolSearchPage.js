@@ -1,18 +1,17 @@
-import { FirebaseDatabaseNode } from '@react-firebase/database'
 import React, { Component } from 'react'
 import Filter from '../Components/Filter'
 import Card from '../Components/Card'
-import { Map, TileLayer } from 'react-leaflet'
+import { MapContainer, TileLayer } from 'react-leaflet'
 
 export default function SchoolSearchPage() {
     return (
         <div className="schoolSearchPage">
-            <Map style={{display: 'absolute', top: '100px', left: '100px'}} center={[51.505, -0.09]}>
+            <MapContainer style={{display: 'absolute', top: '100px', left: '100px'}} center={[51.505, -0.09]}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-            </Map>
+            </MapContainer>
         <aside>
             <h2>Search Colleges & Universities</h2>
             <form>

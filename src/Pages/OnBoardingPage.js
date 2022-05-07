@@ -1,7 +1,7 @@
 import { FirebaseAuthConsumer, IfFirebaseAuthed, IfFirebaseUnAuthed } from '@react-firebase/auth'
 import { FirebaseDatabaseMutation } from '@react-firebase/database'
 import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default class OnBoardingPlace extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ export default class OnBoardingPlace extends Component {
     render() {
         return (
             <div>
-                {this.state.shouldRedirectToAccountPage && <Redirect to="/account" />}
+                {/* {this.state.shouldRedirectToAccountPage && <Redirect to="/account" />} */}
                 <IfFirebaseAuthed>
                     <FirebaseAuthConsumer>
                         {({ isSignedIn, user }) => {

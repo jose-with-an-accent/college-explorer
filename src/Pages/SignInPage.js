@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
 
-import firebase from "firebase/app"
-import "firebase/auth"
-import { Redirect } from 'react-router-dom'
-import { IfFirebaseAuthed } from '@react-firebase/auth';
 
 export default class SignInPage extends Component {
     constructor(props) {
@@ -20,10 +16,10 @@ export default class SignInPage extends Component {
     render() {
         return (
             <div>
-                <IfFirebaseAuthed>
+                {/* <IfFirebaseAuthed>
                     <Redirect to="/account" />
-                </IfFirebaseAuthed>
-                {this.state.shouldRedirectToOnboarding && <Redirect to="/onboarding" />}
+                </IfFirebaseAuthed> */}
+                {/* {this.state.shouldRedirectToOnboarding && <Redirect to="/onboarding" />} */}
                 <form id="signInForm" onSubmit={this.signIn}>
                     <h2>sign in to continue</h2>
                     <input type="email" name="appEmail" onChange={this.recordInfo} />
@@ -36,37 +32,37 @@ export default class SignInPage extends Component {
         )
     }
     async signIn(e) {
-        const { appEmail, appPassword } = this.state
-        e.preventDefault()
-        try {
-            const r = await firebase.auth().signInWithEmailAndPassword(appEmail, appPassword)
-            console.log(r);
-        } catch (e) {
-            console.log(e)
-        }
+        // const { appEmail, appPassword } = this.state
+        // e.preventDefault()
+        // try {
+        //     const r = await firebase.auth().signInWithEmailAndPassword(appEmail, appPassword)
+        //     console.log(r);
+        // } catch (e) {
+        //     console.log(e)
+        // }
     }
     async forgotPassword(e) {
-        e.preventDefault()
-        const {appEmail} = this.state
-        try {
-            const r = await firebase.auth().sendPasswordResetEmail(appEmail, {
-                url: 'https://xyz/forgotPassword/?email=' //TODO- Change URL and add flow so forgot password works
-            })
-            console.log(r)
-        } catch (e) {
-            console.log(e)
-        }
+        // e.preventDefault()
+        // const {appEmail} = this.state
+        // try {
+        //     const r = await firebase.auth().sendPasswordResetEmail(appEmail, {
+        //         url: 'https://xyz/forgotPassword/?email=' //TODO- Change URL and add flow so forgot password works
+        //     })
+        //     console.log(r)
+        // } catch (e) {
+        //     console.log(e)
+        // }
     }
     async signUp(e) {
-        e.preventDefault()
-        const { appEmail, appPassword } = this.state
-        try {
-            const r = await firebase.auth().createUserWithEmailAndPassword(appEmail, appPassword)
-            this.setState({shouldRedirectToOnboarding: true})
-            console.log(r)
-        } catch (e) {
-            console.log(e)
-        }
+        // e.preventDefault()
+        // const { appEmail, appPassword } = this.state
+        // try {
+        //     const r = await firebase.auth().createUserWithEmailAndPassword(appEmail, appPassword)
+        //     this.setState({shouldRedirectToOnboarding: true})
+        //     console.log(r)
+        // } catch (e) {
+        //     console.log(e)
+        // }
     }
     recordInfo(e) {
         this.setState({

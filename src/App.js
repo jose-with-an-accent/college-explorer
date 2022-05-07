@@ -1,19 +1,11 @@
 import React from 'react';
 import ListPage from './Pages/ListPage'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import 'react-router-modal/css/react-router-modal.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
 import ReactTooltip from 'react-tooltip'
 import HomePage from './Pages/HomePage';
-import { ModalContainer } from 'react-router-modal'
 import SchoolSearchPage from './Pages/SchoolSearchPage';
 import SignInPage from './Pages/SignInPage';
-import config from './api/config.json'
-import firebase from "firebase/app"
-import "firebase/auth"
-import "firebase/database"
-import { FirebaseAuthProvider } from '@react-firebase/auth'
-import { FirebaseDatabaseProvider } from '@react-firebase/database'
 import UserOverviewPage from './Pages/UserOverviewPage';
 import TopMenu from './Components/TopMenu';
 import OnBoardingPlace from './Pages/OnBoardingPage';
@@ -25,55 +17,28 @@ import CollegeAdminPage from './Pages/CollegeAdmin';
 import AddToListFlow from './Pages/DynamicData/AddToListFlow';
 function App() {
   return (
-    <FirebaseAuthProvider firebase={firebase} {...config}>
-      <FirebaseDatabaseProvider firebase={firebase} {...config}>
-        <Router>
+    <Router>
 
-          <div className="App">
-            <TopMenu />
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route path="/tools/tuition">
-              <TuitionCalculatorPage />
-            </Route>
-            <Route path="/tools/deadlines">
-              <DeadlinePage />
-            </Route>
-            <Route path="/signIn">
-              <SignInPage />
-            </Route>
-            <Route path="/admin">
-              <CollegeAdminPage />
-            </Route>
-            <Route path="/college/:id">
-              <CollegeDetailPage />
-            </Route>
-            <Route path="/schools/search">
-              <SchoolSearchPage />
-            </Route>
-            <Route path="/onboarding">
-              <OnBoardingPlace />
-            </Route>
-            <Route path="/list/">
-              <ListPage />
-            </Route>
-            <Route path="/info/">
-              <HelpMainPage />
-            </Route>
-            <Route path="/account">
-              <UserOverviewPage />
-            </Route>
-            <Route path="/listFlow/:initialStep/:collegeId">
-              <AddToListFlow />
-            </Route>
-            <ModalContainer />
-            <ReactTooltip />
+      <div className="App">
+        <TopMenu />
+        <Switch>
+          <Route exact path="/" children={HomePage} />
+          <Route path="/tools/tuition" component={TuitionCalculatorPage} />
+          <Route path="/tools/deadlines" component={DeadlinePage} />
+          <Route path="/signIn" component={SignInPage} />
+          <Route path="/admin" component={CollegeAdminPage} />
+          <Route path="/college/:id" component={CollegeDetailPage} />
+          <Route path="/schools/search" component={SchoolSearchPage} />
+          <Route path="/onboarding" component={OnBoardingPlace} />
+          <Route path="/list/" component={ListPage} />
+          <Route path="/info/" component={HelpMainPage} />
+          <Route path="/account" component={UserOverviewPage} />
+          <Route path="/listFlow/:initialStep/:collegeId" component={AddToListFlow} />
+        </Switch>
+        <ReactTooltip />
 
-          </div>
-        </Router>
-      </FirebaseDatabaseProvider>
-    </FirebaseAuthProvider>
+      </div>
+    </Router>
   )
 }
 
